@@ -5,7 +5,7 @@ const app = express();
 // salviamo la porta del serve che vogliamo utilizzare
 const port = 3000;
 // importiamo router
-const postsRouters = require('./router/router_posts');
+const postsRouters = require('./router/postsRouter');
 
 // colleghiamo la cartella con i file statici
 app.use(express.static('public'));
