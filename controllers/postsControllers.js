@@ -2,7 +2,6 @@
 const menu = require('../data/postsData');
 
 
-
 //FUNCTION -> inseriamo le funzioni delle operazioni crud e la loro logica dandogli i nomi delle stesse operazione
 // index
 function index(req, res){
