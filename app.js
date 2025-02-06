@@ -6,7 +6,6 @@ const app = express();
 const port = 3000;
 // importiamo router
 const postsRouters = require('./router/router_posts');
-const posts = require('./data/data_posts');
 
 // colleghiamo la cartella con i file statici
 app.use(express.static('public'));

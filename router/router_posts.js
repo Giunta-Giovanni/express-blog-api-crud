@@ -2,12 +2,13 @@
 const express = require ('express');
 // creiamo una variabile router il cui valore sarà un istanza di express.Router()
 const router = express.Router();
+//importiamo i dati
+const data = require('../data/data_posts')
 
 // ROTTE CRUD
-
 // index
 router.get('/', function (req, res){
-    res.send('mostra index post');
+    res.json(data);
 })
 
 // show
