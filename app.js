@@ -13,6 +13,7 @@ app.get('/', (req, res) =>{
     res.send ('benvenuti nella mia home')
 });
 
+// avviamo il server mettendolo in ascolto nella porta indicata
 app.listen(port, () =>{
     console.log(`la porta di utilizzo è ${port}`)
 })
