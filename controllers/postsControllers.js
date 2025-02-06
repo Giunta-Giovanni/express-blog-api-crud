@@ -1,11 +1,11 @@
 // ci spostiamo i dati in cima
-const data = require('../data/postsData');
+const postsData = require('../data/postsData');
 
 
 //FUNCTION -> inseriamo le funzioni delle operazioni crud e la loro logica dandogli i nomi delle stesse operazione
 // index
 function index(req, res){
-    res.json(data);
+    res.json(postsData);
 };
 
 // show
@@ -16,8 +16,8 @@ function show(req, res){
     const id = parseInt(req.params.id);
     
     // utilizziamo il metodo find per identificare e farci restituire l'elemento corrispondente
-    const post = data.find(post => post.id === id)
-    // const post = data.find(post =>{
+    const post = postsData.find(post => post.id === id)
+    // const post = postsData.find(post =>{
     //   if(post.id === id){
     //     return post }
     // })
@@ -43,7 +43,25 @@ function modify(req, res){
 
 // destroy
 function destroy(req, res){
-    res.send(`elimina il post ${req.params.id}`);
+    // res.send(`elimina il post ${req.params.id}`);
+
+
+    // recuperiamo il parametro dinamico dell'id e convertiamolo in numero salvandolo in variabile
+    const id = parseInt(req.params.id);
+    
+    // utilizziamo il metodo find per identificare e farci restituire l'elemento corrispondente
+    const post = postsData.find(post => post.id === id)
+
+
+
+    //se trova l'elemento rimuovilo dall'array di oggetti
+    postsData.splice(postsData.indexOf(post),1);
+    
+    // mostrami l'array aggiornato
+    console.log(postsData)
+
+    //Restituiamo al Client che è stato effettuato tutto con successo
+    res.sendStatus(204); //204 ok, nessun contenuto
 
 };
 
