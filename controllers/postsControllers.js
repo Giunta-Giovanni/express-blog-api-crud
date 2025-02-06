@@ -1,11 +1,11 @@
 // ci spostiamo i dati in cima
-const menu = require('../data/postsData');
+const data = require('../data/postsData');
 
 
 //FUNCTION -> inseriamo le funzioni delle operazioni crud e la loro logica dandogli i nomi delle stesse operazione
 // index
 function index(req, res){
-    res.send('la mia lista di posts')
+    res.json(data);
 };
 // show
 function show(req, res){
