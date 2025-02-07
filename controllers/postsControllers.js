@@ -2,6 +2,7 @@
 const send = require('send');
 const postsData = require('../data/postsData');
 const { error } = require('console');
+const { title } = require('process');
 
 
 //FUNCTION -> inseriamo le funzioni delle operazioni crud e la loro logica dandogli i nomi delle stesse operazione
@@ -53,7 +54,26 @@ function show(req, res){
 // store
 function store(req, res){
     // res.send('crea un nuovo post');
-    
+    console.log (req.body);
+
+    // creiamo un nuovo id per il runtime
+    const newId = postsData[postsData.length - 1].id + 1;
+    // creiamo un nuovo oggetto
+    const newPost = {
+        id: newId,
+        title: req.body.title,
+        content: req.body.content,
+        image: req.body.image,
+        tags: req.body.tags,
+    };
+    postsData.push(newPost);
+    // controlliamo
+    console.log(postsData);
+    // Restituisco lo stato
+    res.status(201);
+    // restituisco l'oggetto
+    res.json(newPost);
+
 };
 
 // update

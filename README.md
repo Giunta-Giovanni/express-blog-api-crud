@@ -35,11 +35,11 @@ Inseriamo come corpo della nostra request un oggetto che rappresenti un nuovo po
 <!-- Nota: ricordiamo che non bisogna passare l’id quando si crea una nuova risorsa: sarà il server (con l’aiuto del database) a fornirlo.√ -->
 
 <!-- Milestone 4 -->
-Impostiamo il body-parser per far sì che la nostra app riesca a decifrare il request body.
-Poi, all’interno della rotta Store, stampiamo nel terminale i dati in arrivo, grazie a un console.log
+Impostiamo il body-parser per far sì che la nostra app riesca a decifrare il request body.√
+Poi, all’interno della rotta Store, stampiamo nel terminale i dati in arrivo, grazie a un console.log√
 <!-- Milestone 5 -->
-Implementiamo quindi la logica per aggiungere un nuovo post al nostro blog, e prepariamo la risposta adeguata.
-Testiamolo con postman.
+Implementiamo quindi la logica per aggiungere un nuovo post al nostro blog, e prepariamo la risposta adeguata.√
+Testiamolo con postman.√
 <!-- Milestone 6 -->
 Ripetiamo il procedimento per la rotta di Update, in modo da avere la possibilità di modificare le nostre risorse.
 <!-- Bonus -->
