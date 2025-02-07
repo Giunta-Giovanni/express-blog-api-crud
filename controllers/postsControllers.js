@@ -86,7 +86,7 @@ function update(req, res){
 
     // utilizziamo il metodo find per identificare e farci restituire l'elemento corrispondente
     const post = postsData.find(post => post.id === id);
-    
+
     // controlliamo se esiste il post
     if(!post){
         res.status(404)
@@ -111,7 +111,34 @@ function update(req, res){
 
 // modify
 function modify(req, res){
-    res.send(`modifica il post ${req.params.id}`);
+    // res.send(`aggiorna il post ${req.params.id}`);
+    console.log(req.body);
+
+    // recuperiamo il parametro dinamico dell'id e convertiamolo in numero salvandolo in variabile
+    const id = parseInt(req.params.id);
+
+    // utilizziamo il metodo find per identificare e farci restituire l'elemento corrispondente
+    const post = postsData.find(post => post.id === id);
+    
+    // controlliamo se esiste il post
+    if(!post){
+        res.status(404)
+        res.json({
+            error:"Not Found",
+            message:"Elemento non trovato"
+        })
+    }
+
+    //Aggiorniamo i post con il file ricevuto nel body della richiesta con condizione di uscita
+    req.body.title? post.title = req.body.title : post.title = post.title
+    req.body.content? post.content = req.body.content : post.content = post.content
+    req.body.image? post.image = req.body.image : post.image = post.image
+    req.body.title? post.tags = req.body.tags : post.tags = post.tags
+
+    // controlliamo la lista aggiornata
+    console.log(postsData);
+    // Restituiamo l'oggetto appena aggiornato
+    res.json(post);
 };
 
 // destroy
