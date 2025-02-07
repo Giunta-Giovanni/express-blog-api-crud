@@ -9,6 +9,8 @@ const postsRouters = require('./router/postsRouter');
 
 // colleghiamo la cartella con i file statici
 app.use(express.static('public'));
+// registro il body parsers
+app.use(express.json())
 
 // definiamo la prima rotta --> HOME
 app.get('/', (req, res) =>{

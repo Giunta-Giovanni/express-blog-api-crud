@@ -52,7 +52,8 @@ function show(req, res){
 
 // store
 function store(req, res){
-    res.send('crea un nuovo post');
+    // res.send('crea un nuovo post');
+    
 };
 
 // update
