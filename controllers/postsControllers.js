@@ -78,7 +78,27 @@ function store(req, res){
 
 // update
 function update(req, res){
-    res.send(`aggiorna il post ${req.params.id}`);
+    // res.send(`aggiorna il post ${req.params.id}`);
+    console.log(req.body);
+
+    // recuperiamo il parametro dinamico dell'id e convertiamolo in numero salvandolo in variabile
+    const id = parseInt(req.params.id);
+
+    // utilizziamo il metodo find per identificare e farci restituire l'elemento corrispondente
+    const post = postsData.find(post => post.id === id);
+
+
+    //Aggiorniamo i post con il file ricevuto nel body della richiesta
+    post.title = req.body.title;
+    post.content = req.body.content;
+    post.image = req.body.image;
+    post.tags = req.body.tags;
+
+
+    // controlliamo la lista aggiornata
+    console.log(postsData);
+    // Restituiamo l'oggetto appena aggiornato
+    res.json(post);
 };
 
 // modify
