@@ -3,7 +3,7 @@ function notFound(req, res, next){
     res.status(404);
     res.json({
         error: "Not Found",
-        message: "file non trovato"
+        message: "Pagina non trovata"
     })
 }
-module.exports = notFound
+module.exports = notFound;

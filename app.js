@@ -8,6 +8,7 @@ const port = 3000;
 const postsRouters = require('./router/postsRouter');
 // importiamo i middleware 
 const errorsHandler = require('./middlewares/errorsHandler_mws');
+const endPointNotFound = require ('./middlewares/notFound_mws')
 
 
 // colleghiamo la cartella con i file statici
@@ -26,6 +27,8 @@ app.get('/', (req, res) =>{
 // indichiamo ad express che esistono nuove rotte
 app.use('/posts', postsRouters);
 
+// registro l'endpoint notFound mws
+app.use(endPointNotFound);
 
 
 // avviamo il server mettendolo in ascolto nella porta indicata
