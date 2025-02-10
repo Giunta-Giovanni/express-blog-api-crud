@@ -6,11 +6,17 @@ const app = express();
 const port = 3000;
 // importiamo router
 const postsRouters = require('./router/postsRouter');
+// importiamo i middleware 
+const errorsHandler = require('./middlewares/errorsHandler_mws');
+
 
 // colleghiamo la cartella con i file statici
 app.use(express.static('public'));
 // registro il body parsers
-app.use(express.json())
+app.use(express.json());
+// registro l'errorshandler mws
+app.use(errorsHandler);
+
 
 // definiamo la prima rotta --> HOME
 app.get('/', (req, res) =>{
@@ -20,7 +26,9 @@ app.get('/', (req, res) =>{
 // indichiamo ad express che esistono nuove rotte
 app.use('/posts', postsRouters);
 
+
+
 // avviamo il server mettendolo in ascolto nella porta indicata
 app.listen(port, () =>{
     console.log(`la porta di utilizzo è ${port}`)
-})
+});

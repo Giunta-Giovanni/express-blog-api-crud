@@ -6,4 +6,4 @@ function errorsHandler(err, req, res, next){
     })
 }
 // esportiamo la funzione
-module.exports(errorsHandler)
+module.exports = errorsHandler;

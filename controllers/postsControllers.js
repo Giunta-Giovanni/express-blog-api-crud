@@ -42,10 +42,10 @@ function show(req, res){
             message: 'il post non è esistente',
             help:"verifica se l'id è corretto"
         });
-    }
+    };
 
     // restituiamo il dato in formato json
-    res.json(post)
+    res.json(post);
 };
 
 // store
@@ -91,7 +91,7 @@ function update(req, res){
             error:"Not Found",
             message:"Elemento non trovato"
         })
-    }
+    };
 
     //Aggiorniamo i post con il file ricevuto nel body della richiesta
     post.title = req.body.title;
@@ -123,8 +123,8 @@ function modify(req, res){
         res.json({
             error:"Not Found",
             message:"Elemento non trovato"
-        })
-    }
+        });
+    };
 
     //Aggiorniamo i post con il file ricevuto nel body della richiesta con condizione di uscita
     req.body.title? post.title = req.body.title : post.title = post.title
@@ -157,7 +157,7 @@ function destroy(req, res){
             message: 'il post non è esistente',
             help:"verifica se l'id è corretto"
         });
-    }
+    };
 
 
     //se trova l'elemento rimuovilo dall'array di oggetti
