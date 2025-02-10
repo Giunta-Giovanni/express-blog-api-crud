@@ -1,4 +1,4 @@
-// funzione che genera un messaggio di errore e uno stato HTTP adeguato per richieste client non valide
+// funzione che se viene generato un errore si occupa di rispondere con un messaggio e uno status appropriato.
 function errorsHandler(err, req, res, next){
     res.status(500)
     res.json({
