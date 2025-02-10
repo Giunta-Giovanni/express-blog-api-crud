@@ -37,11 +37,18 @@ Inseriamo come corpo della nostra request un oggetto che rappresenti un nuovo po
 <!-- Milestone 4 -->
 Impostiamo il body-parser per far sì che la nostra app riesca a decifrare il request body.√
 Poi, all’interno della rotta Store, stampiamo nel terminale i dati in arrivo, grazie a un console.log√
+
 <!-- Milestone 5 -->
 Implementiamo quindi la logica per aggiungere un nuovo post al nostro blog, e prepariamo la risposta adeguata.√
 Testiamolo con postman.√
+
 <!-- Milestone 6 -->
 Ripetiamo il procedimento per la rotta di Update, in modo da avere la possibilità di modificare le nostre risorse.√
+
+<!-- Milestone 7 -->
+Dopo aver completato tutte le operazioni CRUD, completiamo le nostre API inserendo un middleware per la gestione delle rotte non registrate e uno per la gestione degli errori.
+1. Se viene chiamato un endpoint inesistente, un middleware dovrà rispondere un messaggio e uno status appropriato.
+2. Se viene generato un errore, un middleware si occuperà di rispondere con un messaggio e uno status appropriato.
 
 <!-- Bonus -->
 Quelli del giorno prima, se non già fatti

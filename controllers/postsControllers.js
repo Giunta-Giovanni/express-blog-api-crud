@@ -1,8 +1,5 @@
 // ci spostiamo i dati in cima
-const send = require('send');
 const postsData = require('../data/postsData');
-const { error } = require('console');
-const { title } = require('process');
 
 
 //FUNCTION -> inseriamo le funzioni delle operazioni crud e la loro logica dandogli i nomi delle stesse operazione
