@@ -15,9 +15,6 @@ const endPointNotFound = require ('./middlewares/notFound_mws')
 app.use(express.static('public'));
 // registro il body parsers
 app.use(express.json());
-// registro l'errorshandler mws
-app.use(errorsHandler);
-
 
 // definiamo la prima rotta --> HOME
 app.get('/', (req, res) =>{
@@ -29,6 +26,9 @@ app.use('/posts', postsRouters);
 
 // registro l'endpoint notFound mws
 app.use(endPointNotFound);
+
+// registro l'errorshandler mws
+app.use(errorsHandler);
 
 
 // avviamo il server mettendolo in ascolto nella porta indicata

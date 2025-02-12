@@ -6,7 +6,6 @@ const postsData = require('../data/postsData');
 // index
 function index(req, res){
     // res.json(postsData);
-
     // inizialmente il post filtrato sarà uguale a quello originale
     let filteredPostsData = postsData;
     // se la richiesta contiene un filtro allora filtriamo i posts
@@ -21,7 +20,7 @@ function index(req, res){
 
 // show
 function show(req, res){
-    // res.send(`mostra il post ${req.params.id}`);
+    // res.send(`mostra il post ${req.params.id}`); 
 
     // recuperiamo il parametro dinamico dell'id e convertiamolo in numero salvandolo in variabile
     const id = parseInt(req.params.id);
@@ -77,7 +76,7 @@ function store(req, res){
 function update(req, res){
     // res.send(`aggiorna il post ${req.params.id}`);
     console.log(req.body);
-
+    isanfjnfs;
     // recuperiamo il parametro dinamico dell'id e convertiamolo in numero salvandolo in variabile
     const id = parseInt(req.params.id);
 
