@@ -24,7 +24,7 @@ app.use(express.json());
 
 // Abilitiamo Cors
 app.use(cors({
-    origin: 'http://localhost:5174/'
+    origin: 'http://localhost:5173'
 }));
 
 // definiamo la prima rotta --> HOME
