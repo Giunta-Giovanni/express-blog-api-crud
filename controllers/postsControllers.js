@@ -4,14 +4,14 @@ const postsData = require('../data/postsData');
 
 //FUNCTION -> inseriamo le funzioni delle operazioni crud e la loro logica dandogli i nomi delle stesse operazione
 // index
-function index(req, res){
+function index(req, res) {
     // res.json(postsData);
     // inizialmente il post filtrato sarà uguale a quello originale
     let filteredPostsData = postsData;
     // se la richiesta contiene un filtro allora filtriamo i posts
-    if (req.query.tags){
+    if (req.query.tags) {
         // filtriamo i posts
-        filteredPostsData = postsData.filter (post => post.tags.includes(req.query.tags));
+        filteredPostsData = postsData.filter(post => post.tags.includes(req.query.tags));
     };
 
     // restituiamo il dato in formato json
@@ -19,12 +19,12 @@ function index(req, res){
 }
 
 // show
-function show(req, res){
+function show(req, res) {
     // res.send(`mostra il post ${req.params.id}`); 
 
     // recuperiamo il parametro dinamico dell'id e convertiamolo in numero salvandolo in variabile
     const id = parseInt(req.params.id);
-    
+
     // utilizziamo il metodo find per identificare e farci restituire l'elemento corrispondente
     const post = postsData.find(post => post.id === id);
     // const post = postsData.find(post =>{
@@ -33,13 +33,13 @@ function show(req, res){
     // })
 
     //Risoluzione undefined
-    if(!post){
+    if (!post) {
         // ritorno lo stato di errore 404
         res.status(404)
         return res.json({
-            error:'not found',
+            error: 'not found',
             message: 'il post non è esistente',
-            help:"verifica se l'id è corretto"
+            help: "verifica se l'id è corretto"
         });
     };
 
@@ -48,9 +48,9 @@ function show(req, res){
 };
 
 // store
-function store(req, res){
+function store(req, res) {
     // res.send('crea un nuovo post');
-    console.log (req.body);
+    console.log(req.body);
 
     // creiamo un nuovo id per il runtime
     const newId = postsData[postsData.length - 1].id + 1;
@@ -61,6 +61,7 @@ function store(req, res){
         content: req.body.content,
         image: req.body.image,
         tags: req.body.tags,
+        pubblicato: req.body.pubblicato,
     };
     postsData.push(newPost);
     // controlliamo
@@ -73,7 +74,7 @@ function store(req, res){
 };
 
 // update
-function update(req, res){
+function update(req, res) {
     // res.send(`aggiorna il post ${req.params.id}`);
     console.log(req.body);
     isanfjnfs;
@@ -84,11 +85,11 @@ function update(req, res){
     const post = postsData.find(post => post.id === id);
 
     // controlliamo se esiste il post
-    if(!post){
+    if (!post) {
         res.status(404)
         res.json({
-            error:"Not Found",
-            message:"Elemento non trovato"
+            error: "Not Found",
+            message: "Elemento non trovato"
         })
     };
 
@@ -97,6 +98,8 @@ function update(req, res){
     post.content = req.body.content;
     post.image = req.body.image;
     post.tags = req.body.tags;
+    post.pubblicato = req.body.pubblicato;
+
 
 
     // controlliamo la lista aggiornata
@@ -106,7 +109,7 @@ function update(req, res){
 };
 
 // modify
-function modify(req, res){
+function modify(req, res) {
     // res.send(`aggiorna il post ${req.params.id}`);
     console.log(req.body);
 
@@ -115,21 +118,23 @@ function modify(req, res){
 
     // utilizziamo il metodo find per identificare e farci restituire l'elemento corrispondente
     const post = postsData.find(post => post.id === id);
-    
+
     // controlliamo se esiste il post
-    if(!post){
+    if (!post) {
         res.status(404)
         res.json({
-            error:"Not Found",
-            message:"Elemento non trovato"
+            error: "Not Found",
+            message: "Elemento non trovato"
         });
     };
 
     //Aggiorniamo i post con il file ricevuto nel body della richiesta con condizione di uscita
-    req.body.title? post.title = req.body.title : post.title = post.title
-    req.body.content? post.content = req.body.content : post.content = post.content
-    req.body.image? post.image = req.body.image : post.image = post.image
-    req.body.title? post.tags = req.body.tags : post.tags = post.tags
+    req.body.title ? post.title = req.body.title : post.title = post.title
+    req.body.content ? post.content = req.body.content : post.content = post.content
+    req.body.image ? post.image = req.body.image : post.image = post.image
+    req.body.tags ? post.tags = req.body.tags : post.tags = post.tags
+    req.body.pubblicato ? post.pubblicato = req.body.pubblicato : post.pubblicato = post.pubblicato
+
 
     // controlliamo la lista aggiornata
     console.log(postsData);
@@ -138,30 +143,30 @@ function modify(req, res){
 };
 
 // destroy
-function destroy(req, res){
+function destroy(req, res) {
     // res.send(`elimina il post ${req.params.id}`);
 
     // recuperiamo il parametro dinamico dell'id e convertiamolo in numero salvandolo in variabile
     const id = parseInt(req.params.id);
-    
+
     // utilizziamo il metodo find per identificare e farci restituire l'elemento corrispondente
     const post = postsData.find(post => post.id === id);
 
     //Risoluzione undefined
-    if(!post){
+    if (!post) {
         // ritorno lo stato di errore 404
         res.status(404)
         return res.json({
-            error:'not found',
+            error: 'not found',
             message: 'il post non è esistente',
-            help:"verifica se l'id è corretto"
+            help: "verifica se l'id è corretto"
         });
     };
 
 
     //se trova l'elemento rimuovilo dall'array di oggetti
-    postsData.splice(postsData.indexOf(post),1);
-    
+    postsData.splice(postsData.indexOf(post), 1);
+
     // mostrami l'array aggiornato
     console.log(postsData);
 
@@ -170,4 +175,4 @@ function destroy(req, res){
 
 };
 
-module.exports = {index, show, store, update, modify, destroy};
+module.exports = { index, show, store, update, modify, destroy };
